@@ -1,0 +1,70 @@
+﻿@model List<Lap3MVC.Models.User>
+<div class="container text-center m-5">
+	<a class="btn btn-primary m-3" asp-controller="task" asp-action="Index">
+		BackToList
+	</a>
+<div class="row bg-success p-3 fs-6">
+	<div class="col ">
+		Name
+	</div>
+	<div class="col ">
+		Email
+	</div>
+	<div class="col ">
+
+		Details
+
+	</div>
+	<div class="col ">
+
+		Edite
+
+	</div>
+
+	<div class="col ">
+
+		Delete
+
+	</div>
+
+
+</div>
+</div>
+
+
+@if (Model.Any())
+{
+	@foreach (var item in Model)
+	{
+		<div class="container text-center m-5">
+			<div class="row">
+				<div class="col">
+					@item.Name
+				</div>
+				<div class="col">
+					@item.Email
+				</div>
+				
+				<div class="col">
+					<a class="btn btn-primary" asp-controller="User" asp-action="Details" asp-route-id="@item.Id">
+						Details
+					</a>
+				</div>
+				<div class="col">
+					<a class="btn btn-primary" asp-controller="user" asp-action="Edite" asp-route-id="@item.Id">
+						Edite
+					</a>
+				</div>
+				<div class="col">
+
+					<a class="btn btn-danger" asp-controller="User" asp-action="Delete" asp-route-id="@item.Id">
+						Delete
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+	}
+
+}

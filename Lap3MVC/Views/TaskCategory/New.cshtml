@@ -1,0 +1,18 @@
+﻿@using Lap3MVC.Models;
+@model TaskCategory;
+<div class="container-fluid mt-5 shadow  bg-dark rounded p-5 w-25">
+	<h5 class="text-white text-center"> Add New Category</h5>
+	
+	<form asp-action="New" asp-controller="TaskCategory" asp-antiforgery="true" method="post">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<div class="text-white mt-2">
+			<label asp-for="Category"></label>
+			<input asp-for="Category" class="form-control" />
+			<span asp-validation-for="Category" class="text-danger"></span>
+
+		</div>
+		<input type="submit" class="btn btn-success text-center mt-2" value="Save" />
+
+	</form>
+
+</div>

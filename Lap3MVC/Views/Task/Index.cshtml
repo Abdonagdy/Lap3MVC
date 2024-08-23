@@ -1,0 +1,96 @@
+﻿@model List<Lap3MVC.Models.Task>
+@{
+	SelectList statusList1 = new SelectList(Enum.GetValues(typeof(Lap3MVC.Models.TaskStatus)));
+	
+	
+}
+<div class="container text-center m-5">
+	<div class="row  p-3 fs-6 d-flex flex-column  align-items-center">
+		<div class="col-6 mb-5 ">
+			<form asp-action="index" class="d-flex flex-row justify-content-center align-items-center" asp-controller="task" method="get">
+				<input class="form-control w-50 me-5 rounded-5" name="TaskName" />
+				<input type="submit" class="w-25 bg-secondary text-white p-2 rounded-5" value="FilterByTaskName" />
+			</form>
+		</div>
+		<div class="col-6 mb-5 ">
+			<form asp-action="index" class="d-flex flex-row justify-content-center align-items-center" asp-controller="task" method="get">
+				<select name="statusTaskFilter" class="w-50 me-5 rounded-5" asp-items="statusList1" class="form-control">
+				</select>
+				<input type="submit" class="w-25 bg-secondary text-white p-2 rounded-5" value="FilterByStatus" />
+			</form>
+		</div>
+	</div>
+</div>
+	
+
+<div class="container text-center m-5">
+
+	<div class="row bg-success p-3 fs-6">
+		<div class="col ">
+			Name
+		</div>
+		<div class="col ">
+			AssignDate
+		</div>
+		<div class="col ">
+			Description
+		</div>
+		<div class="col ">
+
+			Details
+
+		</div>
+		<div class="col ">
+
+			Edite
+
+		</div>
+
+		<div class="col ">
+
+			Delete
+
+		</div>
+
+
+	</div>
+</div>
+
+@if (Model.Any())
+{
+	@foreach (var item in Model)
+	{
+		<div class="container text-center m-5">
+			<div class="row">
+				<div class="col">
+					@item.Name
+				</div>
+				<div class="col">
+					@item.AssignDate
+				</div>
+				<div class="col">
+					@item.Description
+				</div>
+				<div class="col">
+					<a class="btn btn-primary" asp-controller="Task" asp-action="Details" asp-route-id="@item.Id">
+						Details
+					</a>
+				</div>
+				<div class="col">
+					<a class="btn btn-primary" asp-controller="Task" asp-action="Edite" asp-route-id="@item.Id">
+						Edite
+					</a>
+				</div>
+				<div class="col">
+
+					<a class="btn btn-danger" asp-controller="Task" asp-action="Delete" asp-route-id="@item.Id">
+						Delete
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+	}
+
+}
